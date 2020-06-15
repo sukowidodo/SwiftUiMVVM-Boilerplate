@@ -9,27 +9,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @ObservedObject var weatherVM: WeatherViewModel
+    @State private var username: String = ""
+    @State private var password: String = ""
+    @ObservedObject var loginVM : LoginViewModel
+    @State private var showingAlert = false
+
     
     init() {
-        self.weatherVM = WeatherViewModel()
+        self.loginVM = LoginViewModel()
     }
     
     var body: some View {
         VStack {
-            Text("Weather Report").font(.largeTitle).padding()
-            
-            TextField("Enter city name...", text: self.$weatherVM.cityName) {
-                self.weatherVM.search()
+            Text("Username")
+                .frame(maxWidth: .infinity, alignment: Alignment.leading)
+            TextField("Enter username...", text: $username)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
+                .foregroundColor(.red)
+            Text("Password").frame(maxWidth: .infinity, alignment: Alignment.leading)
+            TextField("Enter password...", text: $password)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
+                .foregroundColor(.red)
+    
+            Button(action: {
+                self.loginVM.doLogin(param: [
+                        "username" : self.username,
+                        "password" : self.password
+                    ]
+                )
+                
+            }) {
+                Text("Login").foregroundColor(.blue)
             }
-            
-            Text("Temp -\(self.weatherVM.temperature)").font(.largeTitle)
-            
-            Spacer()
             
         }.padding()
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
