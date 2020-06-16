@@ -12,8 +12,6 @@ struct ContentView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @ObservedObject var loginVM : LoginViewModel
-    @State private var showingAlert = false
-
     
     init() {
         self.loginVM = LoginViewModel()
@@ -28,7 +26,7 @@ struct ContentView: View {
                 .autocapitalization(.none)
                 .foregroundColor(.red)
             Text("Password").frame(maxWidth: .infinity, alignment: Alignment.leading)
-            TextField("Enter password...", text: $password)
+            SecureField("Enter password...", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
                 .foregroundColor(.red)
@@ -44,6 +42,18 @@ struct ContentView: View {
                 Text("Login").foregroundColor(.blue)
             }
             
+            Text("")
+                .alert(isPresented: Binding<Bool>(get: { () -> Bool in
+                    self.loginVM.isAlert
+                }, set: { (Bool) in
+                    true
+                })) {
+                    Alert(
+                        title: Text("Error"),
+                        message: Text("\(self.loginVM.result?.message ?? "")"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
         }.padding()
     }
     

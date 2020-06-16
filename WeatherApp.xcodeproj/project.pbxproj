@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		0DA333922495671100ACC726 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA333912495671100ACC726 /* LoginViewModel.swift */; };
 		521F28E32497E6C700D74C4B /* ResponseLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F28E22497E6C700D74C4B /* ResponseLogin.swift */; };
 		521F28E52497E71100D74C4B /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F28E42497E71100D74C4B /* Data.swift */; };
+		521F28E82498ACA600D74C4B /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 521F28E72498ACA600D74C4B /* KeychainSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521F28E82498ACA600D74C4B /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +148,9 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				521F28E72498ACA600D74C4B /* KeychainSwift */,
+			);
 			productName = WeatherApp;
 			productReference = 0DA33373249564B700ACC726 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +179,9 @@
 				Base,
 			);
 			mainGroup = 0DA3336A249564B700ACC726;
+			packageReferences = (
+				521F28E62498ACA600D74C4B /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = 0DA33374249564B700ACC726 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -400,6 +408,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		521F28E62498ACA600D74C4B /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 19.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		521F28E72498ACA600D74C4B /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 521F28E62498ACA600D74C4B /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DA3336B249564B700ACC726 /* Project object */;
 }
