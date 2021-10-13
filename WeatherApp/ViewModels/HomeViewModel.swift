@@ -3,7 +3,7 @@
 //  WeatherApp
 //
 //  Created by macbook on 6/17/20.
-//  Copyright © 2020 Prashant Gaikwad. All rights reserved.
+//  Copyright © 2020 
 //
 
 import Foundation
